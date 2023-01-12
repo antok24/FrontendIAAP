@@ -134,7 +134,7 @@ data(){
 },
 methods:{
     refreshData(){
-        axios.get(variables.API_URL+"department")
+        axios.get(variables.API_URL+"getDataMhs")
         .then((response)=>{
             this.mahasiswas=response.data;
             this.mahasiswasWithoutFilter=response.data;
@@ -142,7 +142,7 @@ methods:{
     },
     addClick(){
         this.modalTitle="Add Mahasiswa";
-        this.DepartmenId=0;
+        this.MahasiswaId=0;
         this.MahasiswaNIM="";
         this.MahasiswaNama="";
         this.MahasiswaProdi="";
@@ -159,7 +159,7 @@ methods:{
         this.MahasiswaHP=mhs.MahasiswaHP;
     },
     createClick(){
-        axios.post(variables.API_URL+"department",{
+        axios.post(variables.API_URL+"insertDataMhs",{
             MahasiswaNIM:this.MahasiswaNIM,
             MahasiswaNama:this.MahasiswaNama,
             MahasiswaProdi:this.MahasiswaProdi,
@@ -172,7 +172,7 @@ methods:{
         });
     },
     updateClick(){
-        axios.put(variables.API_URL+"department",{
+        axios.put(variables.API_URL+"mahasiswa",{
             MahasiswaId:this.MahasiswaId,
             MahasiswaNIM:this.MahasiswaNIM,
             MahasiswaNama:this.MahasiswaNama,
@@ -189,7 +189,7 @@ methods:{
         if(!confirm("Are you sure?")){
             return;
         }
-        axios.delete(variables.API_URL+"department/"+id)
+        axios.delete(variables.API_URL+"mahasiswa/"+id)
         .then((response)=>{
             this.refreshData();
             alert(response.data);
