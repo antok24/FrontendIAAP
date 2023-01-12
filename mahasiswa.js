@@ -134,7 +134,11 @@ data(){
 },
 methods:{
     refreshData(){
-        axios.get(variables.API_URL+"getDataMhs")
+        axios.get(variables.API_URL+"getDataMhs",{
+            headers: {
+                Authorization: 'Basic' + 'QWRtaW5pc3RyYXRvcjptYW5hZ2U=',
+             }
+        })
         .then((response)=>{
             this.mahasiswas=response.data;
             this.mahasiswasWithoutFilter=response.data;
@@ -160,6 +164,11 @@ methods:{
     },
     createClick(){
         axios.post(variables.API_URL+"insertDataMhs",{
+            headers: {
+                Authorization: 'Basic' + 'QWRtaW5pc3RyYXRvcjptYW5hZ2U=',
+             }
+        },
+        {
             MahasiswaNIM:this.MahasiswaNIM,
             MahasiswaNama:this.MahasiswaNama,
             MahasiswaProdi:this.MahasiswaProdi,
